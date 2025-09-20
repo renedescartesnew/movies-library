@@ -19,17 +19,13 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
-        cache-dependency-path: movies-frontend/package-lock.json
+        cache-dependency-path: package-lock.json
         
     - name: Install dependencies
-      run: |
-        cd movies-frontend
-        npm ci
+      run: npm ci
         
     - name: Build application
-      run: |
-        cd movies-frontend
-        npm run build:firebase
+      run: npm run build:firebase
         
     - name: Deploy to Firebase Hosting
       uses: FirebaseExtended/action-hosting-deploy@v0
