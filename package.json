@@ -1,0 +1,33 @@
+{
+  "name": "movies-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "ssr:dev": "node server.js",
+    "ssr:build": "npm run build && node server.js",
+    "build:firebase": "vite build --outDir dist --mode production",
+    "deploy": "npm run build:firebase && firebase deploy",
+    "deploy:hosting": "npm run build:firebase && firebase deploy --only hosting"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/express": "^4.17.21",
+    "@vitejs/plugin-react": "^4.1.1",
+    "compression": "^1.7.4",
+    "sass": "^1.69.5",
+    "sirv": "^2.0.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
+}

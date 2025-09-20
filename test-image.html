@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-image {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .test-info {
+            margin: 10px 0;
+            padding: 10px;
+            background: #333;
+            border-radius: 4px;
+        }
+        .error {
+            color: #ff6b6b;
+        }
+        .success {
+            color: #84cc16;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>TMDB Image Test</h1>
+        <p>Testing if TMDB images are accessible and loading correctly.</p>
+        
+        <div class="test-info">
+            <h3>Test Images:</h3>
+            <p>These are the same images that should be loading in the movie cards.</p>
+        </div>
+        
+        <div>
+            <h4>Demon Slayer Poster:</h4>
+            <img 
+                src="https://image.tmdb.org/t/p/w500/sUsVimPdA1l162FvdBIlmKBlWHx.jpg" 
+                alt="Demon Slayer"
+                class="test-image"
+                onload="showStatus(this, 'success')"
+                onerror="showStatus(this, 'error')"
+            >
+            <div id="status1"></div>
+        </div>
+        
+        <div>
+            <h4>Nobody 2 Poster:</h4>
+            <img 
+                src="https://image.tmdb.org/t/p/w500/svXVRoRSu6zzFtCzkRsjZS7Lqpd.jpg" 
+                alt="Nobody 2"
+                class="test-image"
+                onload="showStatus(this, 'success')"
+                onerror="showStatus(this, 'error')"
+            >
+            <div id="status2"></div>
+        </div>
+        
+        <div>
+            <h4>Superman Poster:</h4>
+            <img 
+                src="https://image.tmdb.org/t/p/w500/wPLysNDLffQLOVebZQCbXJEv6E6.jpg" 
+                alt="Superman"
+                class="test-image"
+                onload="showStatus(this, 'success')"
+                onerror="showStatus(this, 'error')"
+            >
+            <div id="status3"></div>
+        </div>
+        
+        <div class="test-info">
+            <h3>API Test:</h3>
+            <button onclick="testAPI()">Test TMDB API</button>
+            <div id="api-result"></div>
+        </div>
+    </div>
+
+    <script>
+        function showStatus(img, status) {
+            const statusDiv = img.nextElementSibling;
+            if (status === 'success') {
+                statusDiv.innerHTML = '<span class="success">✓ Image loaded successfully</span>';
+            } else {
+                statusDiv.innerHTML = '<span class="error">✗ Image failed to load</span>';
+            }
+        }
+        
+        async function testAPI() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = 'Testing API...';
+            
+            try {
+                const response = await fetch('https://api.themoviedb.org/3/discover/movie?with_genres=28&sort_by=popularity.desc&page=1&language=en-US', {
+                    headers: {
+                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNmNiOTVjYTNmYzJiZDdkYjhhZmU5MjdiZDU3NTllZCIsIm5iZiI6MTc1ODM1Njc4Ny43MDIwMDAxLCJzdWIiOiI2OGNlNjUzMzc3ODkxZDIxYmNjZDcwNWMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.rUATTksD0zl8yhK-l0C9Yf3DMDYZ1ip2HKreEhLMbyw'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<span class="success">✓ API working! Found ${data.results.length} movies. First movie: ${data.results[0].title}</span>`;
+                } else {
+                    resultDiv.innerHTML = `<span class="error">✗ API failed: ${response.status}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ API error: ${error.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>

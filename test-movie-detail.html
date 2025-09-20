@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Detail Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .aspect-3-4 {
+            aspect-ratio: 3 / 4;
+        }
+        .relative {
+            position: relative;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .h-full {
+            height: 100%;
+        }
+        .object-cover {
+            object-fit: cover;
+        }
+        .film-detail__placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 85, 85, 0.1), rgba(255, 140, 0, 0.1));
+        }
+        .film-detail__placeholder-content {
+            text-align: center;
+            padding: 2rem;
+        }
+        .film-detail__placeholder-icon {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 1rem;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        .film-detail__placeholder-text {
+            color: #999;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        .film-detail__placeholder-title {
+            color: #999;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+        .test-info {
+            margin: 20px 0;
+            padding: 15px;
+            background: #333;
+            border-radius: 8px;
+        }
+        .error {
+            color: #ff6b6b;
+        }
+        .success {
+            color: #84cc16;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Movie Detail Image Test</h1>
+        <p>Testing the exact same image loading logic used in the MovieDetail component.</p>
+        
+        <div class="test-info">
+            <h3>Nobody 2 Movie Poster Test:</h3>
+            <p>This should show the actual movie poster, not the placeholder.</p>
+        </div>
+        
+        <div style="width: 300px; margin: 20px 0;">
+            <div class="aspect-3-4 relative">
+                <img 
+                    src="https://image.tmdb.org/t/p/w500/svXVRoRSu6zzFtCzkRsjZS7Lqpd.jpg" 
+                    alt="Nobody 2"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    onload="showImageStatus(this, 'success')"
+                    onerror="showImageStatus(this, 'error')"
+                >
+                <div 
+                    class="film-detail__placeholder"
+                    id="placeholder"
+                    style="display: none;"
+                >
+                    <div class="film-detail__placeholder-content">
+                        <div class="film-detail__placeholder-icon">
+                            <span>🎬</span>
+                        </div>
+                        <p class="film-detail__placeholder-text">Film Poster</p>
+                        <p class="film-detail__placeholder-title">Nobody 2</p>
+                    </div>
+                </div>
+            </div>
+            <div id="image-status"></div>
+        </div>
+        
+        <div class="test-info">
+            <h3>Test with No Image (should show placeholder):</h3>
+        </div>
+        
+        <div style="width: 300px; margin: 20px 0;">
+            <div class="aspect-3-4 relative">
+                <div 
+                    class="film-detail__placeholder"
+                    style="display: flex;"
+                >
+                    <div class="film-detail__placeholder-content">
+                        <div class="film-detail__placeholder-icon">
+                            <span>🎬</span>
+                        </div>
+                        <p class="film-detail__placeholder-text">Film Poster</p>
+                        <p class="film-detail__placeholder-title">Test Movie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showImageStatus(img, status) {
+            const statusDiv = document.getElementById('image-status');
+            const placeholder = document.getElementById('placeholder');
+            
+            if (status === 'success') {
+                statusDiv.innerHTML = '<span class="success">✓ Image loaded successfully - placeholder should be hidden</span>';
+                placeholder.style.display = 'none';
+            } else {
+                statusDiv.innerHTML = '<span class="error">✗ Image failed to load - placeholder should be shown</span>';
+                placeholder.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>

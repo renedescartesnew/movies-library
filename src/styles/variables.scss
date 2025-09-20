@@ -1,0 +1,120 @@
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+// Base Colors (HSL values for better color manipulation)
+$background: hsl(220, 20%, 8%);
+$foreground: hsl(210, 20%, 95%);
+
+$card: hsl(220, 15%, 12%);
+$card-foreground: hsl(210, 20%, 95%);
+
+$popover: hsl(220, 15%, 12%);
+$popover-foreground: hsl(210, 20%, 95%);
+
+$primary: hsl(210, 80%, 60%);
+$primary-foreground: hsl(220, 20%, 8%);
+
+$secondary: hsl(220, 15%, 15%);
+$secondary-foreground: hsl(210, 20%, 95%);
+
+$muted: hsl(220, 15%, 15%);
+$muted-foreground: hsl(210, 10%, 65%);
+
+$accent: hsl(210, 80%, 60%);
+$accent-foreground: hsl(220, 20%, 8%);
+
+$destructive: hsl(0, 84.2%, 60.2%);
+$destructive-foreground: hsl(210, 40%, 98%);
+
+$border: hsl(220, 15%, 20%);
+$input: hsl(220, 15%, 15%);
+$ring: hsl(210, 80%, 60%);
+
+// Film Category Colors
+$action-primary: hsl(0, 85%, 60%);
+$action-secondary: hsl(15, 90%, 55%);
+$action-accent: hsl(0, 100%, 70%);
+
+$drama-primary: hsl(250, 60%, 55%);
+$drama-secondary: hsl(270, 40%, 45%);
+$drama-accent: hsl(250, 80%, 70%);
+
+$comedy-primary: hsl(120, 60%, 50%);
+$comedy-secondary: hsl(90, 70%, 45%);
+$comedy-accent: hsl(120, 80%, 65%);
+
+// Typography
+$font-family-sans: 'Inter', system-ui, sans-serif;
+$font-family-serif: 'Poppins', system-ui, sans-serif;
+$font-family-display: 'Space Grotesk', system-ui, sans-serif;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+$font-size-4xl: 2.25rem;
+$font-size-5xl: 3rem;
+$font-size-6xl: 3.75rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Spacing
+$spacing-0: 0;
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.25rem;
+$spacing-6: 1.5rem;
+$spacing-8: 2rem;
+$spacing-10: 2.5rem;
+$spacing-12: 3rem;
+$spacing-16: 4rem;
+$spacing-20: 5rem;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Border radius
+$border-radius-none: 0;
+$border-radius-sm: 0.125rem;
+$border-radius-md: 0.375rem;
+$border-radius-lg: 0.5rem;
+$border-radius-xl: 0.75rem;
+$border-radius-2xl: 1rem;
+$border-radius-full: 9999px;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Category-specific shadows
+$shadow-action: 0 10px 30px -10px rgba(255, 85, 85, 0.4);
+$shadow-drama: 0 10px 30px -10px rgba(138, 43, 226, 0.4);
+$shadow-comedy: 0 10px 30px -10px rgba(34, 197, 94, 0.4);
+$shadow-card: 0 8px 25px -5px rgba(20, 20, 20, 0.8);
+
+// Transitions
+$transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
